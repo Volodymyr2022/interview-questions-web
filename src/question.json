@@ -10,7 +10,7 @@
     {
         "link": "#is-postmessages test",
         "title": "Is postMessages test",
-        "url": "url test",
+        "url": "https://www.tiktok.com/oembed?url=https://www.tiktok.com/@scout2015/video/6718335390845095173",
         "level": "basic",
         "theme": "JavaScript, React",
         "text": "### Is postMessages synchronous?\n\nThe `postMessage` API is asynchronous. The message is posted to the message queue and handled later, allowing the rest of the script to continue executing without blocking.\n\nExample:\n\n```javascript\nwindow.postMessage('message', 'https://example.com');\nconsole.log('Message sent');  // Output: Message sent\n```"

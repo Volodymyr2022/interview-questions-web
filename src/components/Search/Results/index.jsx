@@ -1,6 +1,6 @@
 import React from 'react';
-import './SearchResults.css';
-import SearchResultItem from '../SearchResultItem';
+import SearchResultItem from '../ResultItem/index.jsx';
+import './style.css';
 
 const SearchResults = ({ results, onTagClick, searchPerformed }) => (
     <div className="search-results">

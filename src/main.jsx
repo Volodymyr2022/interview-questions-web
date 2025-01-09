@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App.jsx';
+import Search from './views/Search/index';
+import Admin from './views/Admin/index';
+import Test from './views/Test/index';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -9,7 +11,10 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<App />} />
+      <Route path="/" element={<Search />} />
+      <Route path="/admin" element={<Admin />} />
+      <Route path="/test" element={<Test />} />
+
     </Routes>
   </BrowserRouter>
 );

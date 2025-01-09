@@ -1,0 +1,9 @@
+.search-footer {
+    background-color: #4caf50;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}

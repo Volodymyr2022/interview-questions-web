@@ -2,9 +2,9 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import './Search.css';
 import questions from '../../question.json';
-import SearchHeader from '../SearchHeader';
-import SearchInput from '../SearchInput';
-import SearchResults from '../SearchResults';
+import SearchHeader from '../../components/Search/Header';
+import SearchInput from '../../components/Search/SearchInput';
+import SearchResults from '../../components/Search/SearchResults';
 
 const Search = () => {
     const searchRef = useRef();

@@ -1,5 +1,5 @@
 import React from 'react';
-import './SearchHeader.css';
+import './style.css';
 
 export default () => (
     <header className="search-header">
