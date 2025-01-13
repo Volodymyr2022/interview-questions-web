@@ -55,11 +55,12 @@ const Basic = () => {
         initialValues={initialValues}
         validate={(values) => {
           const errors = {};
-          if (!values.link) errors.link = "Required";
-          if (!values.title) errors.title = "Required";
-          if (!values.level) errors.level = "Required";
-          if (!values.theme) errors.theme = "Required";
-          if (!values.text) errors.text = "Required";
+          form.forEach(({name}) => {
+            if(name !== 'url' && !values[name]){
+              errors[name] = "Required"
+            }
+          })
+  
           return errors;
         }}
         onSubmit={(values, { setSubmitting, resetForm }) => {
