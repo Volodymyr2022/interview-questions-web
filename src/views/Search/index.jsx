@@ -29,7 +29,6 @@ const Search = () => {
         const filteredResults = questions.filter((question) =>
             Object.values(question).some((field) => String(field).match(rgxp))
         );
-
         setResults(query.length < 3 ? [] : filteredResults);
         setSearchPerformed(true);
     };

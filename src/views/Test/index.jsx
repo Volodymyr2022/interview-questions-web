@@ -1,8 +1,52 @@
-import React, { useState } from 'react';
-import { Formik } from 'formik';
-import './style.css';
+import React, { useState } from "react";
+import { Formik } from "formik";
+import "./style.css";
+
+const form = [
+  {
+    label: "Link",
+    value: "",
+    name: "link",
+  },
+  {
+    label: "Title",
+    value: "",
+    name: "title",
+  },
+  {
+    label: "Url",
+    value: "",
+    name: "url",
+  },
+  {
+    label: "Level",
+    value: "",
+    name: "level",
+  },
+  {
+    label: "Theme",
+    value: "",
+    name: "theme",
+  },
+  {
+    label: "Text",
+    value: "",
+    name: "text",
+  },
+  {
+    label: "Id",
+    value: "",
+    name: "id",
+  }
+];
+
+const initialValues = {};
+
+form.forEach(({name, value}) => initialValues[name]=value);
+
 
 const Basic = () => {
+   
   const [questions, setQuestions] = useState([
     {
       link: "#is-postmessages-synchronous",
@@ -26,27 +70,20 @@ const Basic = () => {
     <div className="basic-container">
       <h1 className="title">Add a New Question</h1>
       <Formik
-        initialValues={{
-          link: '',
-          title: '',
-          url: '',
-          level: '',
-          theme: '',
-          text: '',
-        }}
-        validate={values => {
+        initialValues={initialValues}
+        validate={(values) => {
           const errors = {};
-          if (!values.link) errors.link = 'Required';
-          if (!values.title) errors.title = 'Required';
-          if (!values.level) errors.level = 'Required';
-          if (!values.theme) errors.theme = 'Required';
-          if (!values.text) errors.text = 'Required';
+          if (!values.link) errors.link = "Required";
+          if (!values.title) errors.title = "Required";
+          if (!values.level) errors.level = "Required";
+          if (!values.theme) errors.theme = "Required";
+          if (!values.text) errors.text = "Required";
           return errors;
         }}
         onSubmit={(values, { setSubmitting, resetForm }) => {
-          const newQuestion = { ...values, url: values.url || '' };
-          setQuestions(prevQuestions => [...prevQuestions, newQuestion]);
-          alert('Question added successfully!');
+          const newQuestion = { ...values, url: values.url || "" };
+          setQuestions((prevQuestions) => [...prevQuestions, newQuestion]);
+          alert("Question added successfully!");
           setSubmitting(false);
           resetForm();
         }}
@@ -61,77 +98,28 @@ const Basic = () => {
           isSubmitting,
         }) => (
           <form onSubmit={handleSubmit} className="form-container">
-            <div className="form-group">
-              <label>Link</label>
-              <input
-                type="text"
-                name="link"
-                className="input-field"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.link}
-              />
-              {errors.link && touched.link && <div className="error">{errors.link}</div>}
-            </div>
-            <div className="form-group">
-              <label>Title</label>
-              <input
-                type="text"
-                name="title"
-                className="input-field"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.title}
-              />
-              {errors.title && touched.title && <div className="error">{errors.title}</div>}
-            </div>
-            <div className="form-group">
-              <label>URL (Optional)</label>
-              <input
-                type="text"
-                name="url"
-                className="input-field"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.url}
-              />
-            </div>
-            <div className="form-group">
-              <label>Level</label>
-              <input
-                type="text"
-                name="level"
-                className="input-field"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.level}
-              />
-              {errors.level && touched.level && <div className="error">{errors.level}</div>}
-            </div>
-            <div className="form-group">
-              <label>Theme</label>
-              <input
-                type="text"
-                name="theme"
-                className="input-field"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.theme}
-              />
-              {errors.theme && touched.theme && <div className="error">{errors.theme}</div>}
-            </div>
-            <div className="form-group">
-              <label>Text</label>
-              <textarea
-                name="text"
-                className="textarea-field"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.text}
-              />
-              {errors.text && touched.text && <div className="error">{errors.text}</div>}
-            </div>
-            <button type="submit" className="submit-button" disabled={isSubmitting}>
+              {form.map(({label,value,name}) => (
+                  <div className="form-group" key={name}>
+                  <label>{label}</label>
+                  <input
+                    type="text"
+                    name={name}
+                    className="input-field"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values[name]}
+                  />
+                  {errors[name] && touched[name] && (
+                    <div className="error">{errors[name]}</div>
+                  )}
+                </div>
+              ))}
+            
+            <button
+              type="submit"
+              className="submit-button"
+              disabled={isSubmitting}
+            >
               Submit
             </button>
           </form>
@@ -139,7 +127,9 @@ const Basic = () => {
       </Formik>
       <div className="questions-container">
         <h2 className="questions-title">Current Questions</h2>
-        <pre className="questions-list">{JSON.stringify(questions, null, 2)}</pre>
+        <pre className="questions-list">
+          {JSON.stringify(questions, null, 2)}
+        </pre>
       </div>
     </div>
   );

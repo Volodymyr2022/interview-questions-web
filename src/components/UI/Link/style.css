@@ -1,0 +1,18 @@
+.search-url,
+.search-link {
+    padding: 0.8rem 1.2rem;
+    margin: 0.8rem 0;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #4caf50;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.search-url:hover,
+.search-link:hover {
+    background-color: #e8f5e9;
+    color: #388e3c;
+}

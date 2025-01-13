@@ -1,12 +1,12 @@
 import React from "react";
 import MarkdownView from "react-showdown";
-import VideoWindow from "../../UI/VideoWindow/VideoWindow";
-import SearchTheme from "../Theme/SearchTheme";
+import VideoWindow from "../../UI/VideoWindow";
+import SearchTheme from "../Theme";
 import SearchTitle from "../../UI/Title";
 import Link from "../../UI/Link";
 import "./style.css";
 
-const SearchResultItem = ({ result, onTagClick }) => (
+const SearchResultItem = ({ result, level, onTagClick }) => (
   <div className="search-result">
     <SearchTitle title={result.title} />
     <div className="search-text">
@@ -17,8 +17,8 @@ const SearchResultItem = ({ result, onTagClick }) => (
     </div>
     <VideoWindow url={result.url} />
     <SearchTheme
-      theme={result.theme}
-      level={result.level}
+      theme={result.theme.split(', ')}
+      level={result.level.split(', ')}
       onTagClick={onTagClick}
     />
     <Link link={result.link} />
