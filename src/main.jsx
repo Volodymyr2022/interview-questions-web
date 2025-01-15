@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import Search from './views/Search/index';
 import Admin from './views/Admin/index';
-import Test from './views/Test/index';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -13,8 +12,6 @@ root.render(
     <Routes>
       <Route path="/" element={<Search />} />
       <Route path="/admin" element={<Admin />} />
-      <Route path="/test" element={<Test />} />
-
     </Routes>
   </BrowserRouter>
 );
