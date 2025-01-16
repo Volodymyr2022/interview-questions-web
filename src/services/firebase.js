@@ -14,33 +14,6 @@ const firebaseConfig = {
     measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
 };
 
-
-// src/firebaseConfig.js
-
-
-// const firebaseConfig = {
-//   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-//   authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-//   projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-//   storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-//   messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-//   appId: import.meta.env.VITE_FIREBASE_APP_ID,
-// };
-
-
-
-// const firebaseConfig = {
-//     databaseURL: "https://react-vova-default-rtdb.firebaseio.com/",
-//     apiKey: "AIzaSyCw4dBpE4f434VZIKQ8skoq0J0ZpX3k6eI",
-//     authDomain: "react-vova.firebaseapp.com",
-//     databaseURL: "https://react-vova-default-rtdb.firebaseio.com",
-//     projectId: "react-vova",
-//     storageBucket: "react-vova.firebasestorage.app",
-//     messagingSenderId: "65933276049",
-//     appId: "1:65933276049:web:cbf9bce3a114fd4a3ba030",
-//     measurementId: "G-RCH9HWBJVZ"
-//   };
-
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
@@ -56,7 +29,8 @@ export async function addQuestion(questions) {
   try {
     const usersRef = ref(database, "questions");
     const newUserRef = push(usersRef); // Auto-generate a unique key
-    await set(newUserRef, questions);
+    const newQuestion = { ...questions, id: newUserRef.key }; // Добавляем ключ в объект
+    await set(newUserRef, newQuestion);
     console.log(`Question added successfully.`);
   } catch (error) {
     console.error("Error adding question", error);

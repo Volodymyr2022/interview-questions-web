@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import Search from './views/Search/index';
 import Admin from './views/Admin/index';
+import Update from './views/Update/index.jsx';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -12,6 +13,10 @@ root.render(
     <Routes>
       <Route path="/" element={<Search />} />
       <Route path="/admin" element={<Admin />} />
+      <Route path="/update/:id" element={<Update />} />
+
+      {/* <Route path="/update" element={<Update />} /> */}
+
     </Routes>
   </BrowserRouter>
 );

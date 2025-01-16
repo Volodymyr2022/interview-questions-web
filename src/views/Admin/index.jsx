@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Formik } from "formik";
-import question from "../../question.json";
-import { addQuestion, fetchAllQuestions } from "../../services/firebase";
+import { addQuestion } from "../../services/firebase";
 import "./style.css";
 
 const form = [
@@ -17,25 +16,7 @@ const initialValues = {};
 form.forEach(({ name, value }) => (initialValues[name] = value));
 
 const Basic = () => {
-  // const [questions, setQuestions] = useState([question]);
-  // const [questions, setQuestions] = useState([]);
-  // Функция для загрузки данных из Firebase
-  // const loadQuestions = async () => {
-  //   try {
-  //     const data = await fetchAllQuestions(); // Получает данные из Firebase
-  //     const questionList = Object.entries(data).map(([id, value]) => ({
-  //       id,
-  //       ...value,
-  //     }));
-  //     setQuestions(questionList);
-  //   } catch (error) {
-  //     console.error("Error loading questions:", error);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   loadQuestions(); // Загрузка вопросов при монтировании компонента
-  // }, []);
+ 
   return (
     <div className="basic-container">
       <h1 className="title">Add a New Question</h1>
@@ -54,7 +35,6 @@ const Basic = () => {
         onSubmit={(values, { setSubmitting, resetForm }) => {
           const newQuestion = { ...values, url: values.url || "" };
           addQuestion(newQuestion);
-          // setQuestions((prevQuestions) => [...prevQuestions, newQuestion]);
           alert("Question added successfully!");
           setSubmitting(false);
           resetForm();
@@ -97,12 +77,6 @@ const Basic = () => {
           </form>
         )}
       </Formik>
-      {/* <div className="questions-container">
-        <h2 className="questions-title">Current Questions</h2>
-        <pre className="questions-list">
-          {JSON.stringify(questions, null, 2)}
-        </pre>
-      </div> */}
     </div>
   );
 };
