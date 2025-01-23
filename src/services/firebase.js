@@ -85,3 +85,21 @@ export async function removeAllQuestions() {
     console.error("Error removing questions:", error);
   }
 }
+
+/**
+ * Removes a specific question from the database by its ID.
+ * @param {string} questionId - The unique ID of the question to be deleted.
+ * @returns {Promise<void>}
+ */
+ export async function removeQuestion(questionId) {
+    try {
+      const questionRef = ref(database, `questions/${questionId}`);
+      await remove(questionRef);
+      console.log(`Question with ID ${questionId} has been removed successfully.`);
+    } catch (error) {
+      console.error("Error removing question:", error);
+    }
+  }
+
+  
+

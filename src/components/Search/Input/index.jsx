@@ -21,14 +21,14 @@ const SearchInput = ({
       const questions = await getData();
       const themes = Array.from(
         new Set(
-          questions.flatMap((result) =>
+            Object.values(questions).flatMap((result) =>
             result.theme.split(", ").map((theme) => theme.trim())
           )
         )
       );
 
       const levels = Array.from(
-        new Set(questions.map((result) => result.level))
+        new Set(Object.values(questions).map((result) => result.level))
       );
 
       setUniqueThemes(themes);

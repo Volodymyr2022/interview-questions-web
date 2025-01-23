@@ -16,7 +16,9 @@ const Search = () => {
   useEffect(() => {
     async function fetchData() {
       const questions = await getData();
-      const question = questions.find((element) => element.link === hash);
+      const question = Object.values(questions).find(
+        (element) => element.link === hash
+      );
       if (question) {
         setResults([question]);
         setSearchPerformed(true);
@@ -25,12 +27,12 @@ const Search = () => {
     fetchData();
   }, [hash]);
 
-  const onSearch =async (e, customQuery) => {
+  const onSearch = async (e, customQuery) => {
     if (e) e.preventDefault();
     const query = customQuery || searchRef.current.value.trim().toLowerCase();
     const rgxp = new RegExp(query, "i");
     const questions = await getData();
-    const filteredResults = questions.filter((question) =>
+    const filteredResults = Object.values(questions).filter((question) =>
       Object.values(question).some((field) => String(field).match(rgxp))
     );
     setResults(query.length < 3 ? [] : filteredResults);
