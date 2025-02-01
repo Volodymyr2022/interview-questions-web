@@ -3,6 +3,7 @@ import { Formik } from "formik";
 import { useNavigate } from "react-router-dom";
 import { updateQuestion, removeQuestion } from "../../services/firebase";
 import { getData } from "../../services/questions";
+import { FaTrash } from 'react-icons/fa';
 import "./style.css";
 
 const form = [
@@ -107,13 +108,13 @@ const Update = ({ id }) => {
               >
                 Update
               </button>
-              <button
-                type="button"
-                className="delete-button"
+              <FaTrash
+                // type="button"
+                // className="delete-button"
+                style={{ cursor: 'pointer', color: 'red', fontSize: '20px' }} 
                 onClick={handleDelete}
-              >
-                Delete
-              </button>
+              />
+      
             </div>
           </form>
         )}
