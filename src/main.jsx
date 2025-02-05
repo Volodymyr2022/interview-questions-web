@@ -6,6 +6,7 @@ import Admin from './views/Admin/index';
 import Update from './views/Update/index.jsx';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import LoginPage from './views/LoginPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -13,6 +14,7 @@ root.render(
     <Routes>
       <Route path="/" element={<Search />} />
       <Route path="/admin" element={<Admin />} />
+      <Route path="/login" element={<LoginPage />} />
       <Route path="/update/:id" element={<Update />} />
 
       {/* <Route path="/update" element={<Update />} /> */}
