@@ -75,3 +75,8 @@
 iframe {
     border-radius: 8px;
 }
+.search-title-trash {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
